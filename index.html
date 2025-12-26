@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just-a-Minute</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        #rules {
+            position: relative;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        #timer-display {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #2196F3;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #rules h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        #rules ul {
+            padding-left: 20px;
+        }
+        #rules h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #rules ol {
+            padding-left: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #topicDisplay {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            min-height: 40px;
+        }
+        details {
+            margin: 20px auto;
+            max-width: 700px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+        .inner-details {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        }
+        form {
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        #contestantManager {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        #newContestant {
+            flex: 1;
+            height: 30px;
+            margin-top: 8px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        #addContestant {
+            height: 30px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #2196F3;
+            color: white;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        #addContestant:hover {
+            background-color: #1976D2;
+        }
+        .contestant-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 30px;
+            padding: 6px 0 0 0;
+            border-bottom: 1px solid #eee;
+        }
+        .remove-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+        .scoreboard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .plus-btn, .minus-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .plus-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .plus-btn:hover {
+            background-color: #45a049;
+        }
+        .minus-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .minus-btn:hover {
+            background-color: #d32f2f;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2196F3;
+            margin: 0 15px;
+        }
+        .player-name {
+            width: 150px;
+            display: inline-block;
+        }
+        #addContestant {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 2px 6px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            padding: 3px 6px;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .remove-topic-btn {
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        .remove-topic-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .remove-topic-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Just-a-Minute (Family & Friends Edition)</h1>
+    <div id="rules">
+        <h2>Rules</h2>
+        <div id="timer-display">60</div>
+        <p>Players must speak for one minute without:</p>
+        <ul>
+            <li>hesitation</li>
+            <li>deviation</li>
+            <li>repetition</li>
+        </ul>
+        <details class="inner-details">
+            <summary>Scoring</summary>
+            <ol>
+                <li>One point for speaking on the one-minute mark</li>
+                <li>One point to the challenger for a correct challenge</li>
+                <li>One point to the speaker for an incorrect challenge</li>
+                <li>One point to a speaker who completes an entire minute</li>
+            </ol>
+        </details>
+        <div id="timer">
+            <div class="timer-buttons">
+                <button onclick="startTimer()">Start</button>
+                <button onclick="stopTimer()">Stop</button>
+                <button onclick="resetTimer()">Reset</button>
+                <button onclick="add5()">+5</button>
+                <button onclick="sub5()">-5</button>
+            </div>
+        </div>
+    </div>
+    <details>
+        <summary>Manage Players</summary>
+        <div id="contestantManager">
+            <input type="text" id="newContestant" placeholder="Enter player name">
+            <button id="addContestant">+</button>
+        </div>
+        <div id="contestantList"></div>
+    </details>
+    <details>
+        <summary>Scoreboard</summary>
+        <div id="scoreboard"></div>
+    </details>
+    <details>
+        <summary>Topics Manager</summary>
+        <div id="topicsManager">
+        </div>
+    </details>
+    <button id="generateBtn">Topic</button>
+    <div id="topicDisplay"></div>
+
+    <script>
+        // Topic management system with persistent deletions
+        const ALL_TOPICS = [
+            "Garden gnomes",
+            "A good book",
+            "Wives",
+            "The Wizard of Oz",
+            "Is golf a good walk spoiled?",
+            "Grandparents",
+            "Good taste in music",
+            "Not worth the money",
+            "Cats and dogs",
+            "Public or private?",
+            "Disgusting",
+            "Unicorns, gryphons, and dragons",
+            "The tooth fairy",
+            "Gilmore Girls",
+            "First class travel",
+            "Social media",
+            "Should adults be allowed to access social media?",
+            "Childhood best friends",
+            "Nosy neighbors",
+            "Small talk",
+            "Space tourism",
+            "Clowns at parties",
+            "Talking to pets",
+            "Robot assistants",
+            "Self-driving cars",
+            "Virtual reality dating",
+            "The 4-day work week",
+            "Tipping culture",
+            "The middle seat",
+            "Re-gifting",
+            "Six seven",
+            "Wedding speeches",
+            "Poetry",
+            "New Year's resolutions",
+            "Museums",
+            "Social media influencers",
+            "Retro fashion",
+            "Thrifting",
+            "Meditation",
+            "Coffee vs. tea",
+            "Window seats",
+            "Camping vs. Glamping",
+            "Early bird or night owl?",
+            "Board games",
+            "Renewable energy",
+            "Food trucks",
+            "Farmers markets",
+            "Recycling",
+            "Parent-teacher conferences",
+            "Awkward silences",
+            "First impressions",
+            "High school drama",
+            "Bad haircuts",
+            "Lottery winners",
+            "Invisibility",
+            "Flying cars",
+            "Strict librarians",
+            "Hoarding",
+            "Feng shui",
+            "Interior design",
+            "Tiny houses",
+            "Treehouses",
+            "Castles",
+            "Luxury cruises",
+            "The stock market",
+            "Disney",
+            "Roller coasters",
+            "Skiing",
+            "Dance",
+            "Road trips",
+            "People with whom I might disagree",
+            "Wine tasting",
+            "Buffets",
+            "Fine dining",
+            "Fast food",
+            "Bridge",
+            "Scrabble",
+            "People who clap when the plane lands",
+            "Bad jokes",
+            "Church and state",
+            "Fruit and vegetables",
+            "The good old days",
+            "If I were in charge of everything...",
+            "DIY"
+        ];
+        
+        // Load deleted topics from localStorage
+        let deletedTopics = [];
+        const savedDeletedTopics = localStorage.getItem('deletedTopics');
+        if (savedDeletedTopics) {
+            try {
+                deletedTopics = JSON.parse(savedDeletedTopics);
+                if (!Array.isArray(deletedTopics)) {
+                    deletedTopics = [];
+                }
+            } catch (e) {
+                deletedTopics = [];
+            }
+        }
+        
+        // Filter out deleted topics from the main list
+        let topics = ALL_TOPICS.filter(topic => !deletedTopics.includes(topic));
+        
+        // Load any custom topics from localStorage
+        const savedTopics = localStorage.getItem('topics');
+        if (savedTopics) {
+            try {
+                const customTopics = JSON.parse(savedTopics);
+                if (Array.isArray(customTopics)) {
+                    // Add custom topics that aren't in the deleted list
+                    topics = topics.concat(customTopics.filter(topic => !deletedTopics.includes(topic)));
+                }
+            } catch (e) {
+                // Ignore corrupted data
+            }
+        }
+        function renderTopics() {
+            const topicsManager = document.getElementById('topicsManager');
+            const formHTML = '<div style="margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">' +
+                '<input type="text" id="newTopic" placeholder="Enter new topic" style="padding: 8px; border: 1px solid #ccc; border-radius: 3px; width: 70%; margin-right: 10px;">' +
+                '<button id="addTopicBtn" style="background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 8px 16px; font-size: 14px;">+</button>' +
+                '</div>';
+            
+            if (topics.length === 0) {
+                topicsManager.innerHTML = formHTML + '<p>No topics available</p>';
+                return;
+            }
+            
+            let tableHTML = formHTML + '<table style="width: 100%; border-collapse: collapse; margin-top: 10px;">';
+            tableHTML += '<thead><tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Topic</th><th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Action</th></tr></thead>';
+            tableHTML += '<tbody>';
+            
+            topics.forEach((topic, index) => {
+                tableHTML += `<tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 8px;">${topic}</td>
+                    <td style="padding: 8px; text-align: right;">
+                        <button class="remove-topic-btn" data-index="${index}" style="background-color: #f44336; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px;">-</button>
+                    </td>
+                </tr>`;
+            });
+            
+            tableHTML += '</tbody></table>';
+            topicsManager.innerHTML = tableHTML;
+        }
+        
+        let timeLeft = 60.0;
+        let timerId = null;
+        let isRunning = false;
+        const timerDisplay = document.getElementById('timer-display');
+
+        function updateDisplay() {
+            if (timerDisplay) timerDisplay.textContent = timeLeft.toFixed(1);
+        }
+
+        function startTimer() {
+            if (!isRunning && timeLeft > 0) {
+                isRunning = true;
+                timerId = setInterval(() => {
+                    timeLeft = Math.max(0, timeLeft - 0.1);
+                    updateDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerId);
+                        isRunning = false;
+                        timeLeft = 0;
+                        updateDisplay();
+                        playCelebratorySound();
+                    }
+                }, 100);
+            }
+        }
+        
+        function playCelebratorySound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            oscillator.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Create an uplifting, celebratory sound
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 1500;
+            
+            // Set up filter for brighter quality
+            filter.type = 'highpass';
+            filter.frequency.value = 2000;
+            filter.Q.value = 3;
+            
+            gainNode.gain.value = 0.01; // Start quietly
+            
+            oscillator.start();
+            
+            // Create celebratory rising effect with multiple frequency jumps
+            oscillator.frequency.exponentialRampToValueAtTime(2500, audioContext.currentTime + 0.3);
+            oscillator.frequency.exponentialRampToValueAtTime(3500, audioContext.currentTime + 0.9);
+            oscillator.frequency.exponentialRampToValueAtTime(4500, audioContext.currentTime + 1.5);
+            
+            // Volume envelope with crescendo effect
+            gainNode.gain.exponentialRampToValueAtTime(0.15, audioContext.currentTime + 0.2);
+            gainNode.gain.exponentialRampToValueAtTime(0.25, audioContext.currentTime + 0.8);
+            gainNode.gain.exponentialRampToValueAtTime(0.1, audioContext.currentTime + 1.5);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 1.8);
+            
+            oscillator.stop(audioContext.currentTime + 1.8);
+        }
+
+        function stopTimer() {
+            clearInterval(timerId);
+            isRunning = false;
+        }
+
+        function resumeTimer() {
+            if (!isRunning && timeLeft > 0) {
+                isRunning = true;
+                timerId = setInterval(() => {
+                    timeLeft -= 0.1;
+                    updateDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerId);
+                        isRunning = false;
+                    }
+                }, 100);
+            }
+        }
+
+        function resetTimer() {
+            timeLeft = 60.0;
+            updateDisplay();
+            clearInterval(timerId);
+            isRunning = false;
+        }
+
+        function add5() {
+            timeLeft = Math.min(60, timeLeft + 5);
+            updateDisplay();
+        }
+
+        function sub5() {
+            timeLeft = Math.max(0, timeLeft - 5);
+            updateDisplay();
+        }
+
+        const generateBtn = document.getElementById('generateBtn');
+        const topicDisplay = document.getElementById('topicDisplay');
+        let players = [];
+        const stored = localStorage.getItem('players');
+        if (stored) {
+            try {
+                players = JSON.parse(stored);
+                if (!Array.isArray(players)) {
+                    players = [];
+                } else if (players.length > 0 && typeof players[0] === 'string') {
+                    players = players.map(name => ({name, score: 0}));
+                }
+            } catch (e) {
+                players = [];
+            }
+        }
+        const addContestantBtn = document.getElementById('addContestant');
+        const newContestantInput = document.getElementById('newContestant');
+        const contestantList = document.getElementById('contestantList');
+        const scoreboard = document.getElementById('scoreboard');
+
+        function renderContestants() {
+            contestantList.innerHTML = '';
+            players.forEach((player, index) => {
+                const div = document.createElement('div');
+                div.className = 'contestant-item';
+                div.innerHTML = `${player.name} <button class="remove-btn" data-index="${index}">-</button>`;
+                contestantList.appendChild(div);
+            });
+            localStorage.setItem('players', JSON.stringify(players));
+        }
+
+        function renderScoreboard() {
+            scoreboard.innerHTML = '';
+            players.forEach((player, index) => {
+                const div = document.createElement('div');
+                div.className = 'scoreboard-item';
+                div.innerHTML = `<span class="player-name">${player.name}</span> <span class="score">${player.score}</span> <button class="plus-btn" data-index="${index}">+1</button> <button class="minus-btn" data-index="${index}">-1</button>`;
+                scoreboard.appendChild(div);
+            });
+        }
+
+        generateBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * topics.length);
+            topicDisplay.textContent = topics[randomIndex];
+        });
+
+        addContestantBtn.addEventListener('click', () => {
+            const name = newContestantInput.value.trim();
+            if (name) {
+                players.push({name: name, score: 0});
+                newContestantInput.value = '';
+                renderContestants();
+                renderScoreboard();
+            }
+        });
+
+        newContestantInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                addContestantBtn.click();
+            }
+        });
+
+        contestantList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-btn')) {
+                const index = parseInt(e.target.dataset.index);
+                players.splice(index, 1);
+                renderContestants();
+                renderScoreboard();
+            }
+        });
+
+        scoreboard.addEventListener('click', (e) => {
+            const index = parseInt(e.target.dataset.index);
+            if (e.target.classList.contains('plus-btn')) {
+                players[index].score++;
+                renderScoreboard();
+                localStorage.setItem('players', JSON.stringify(players));
+            } else if (e.target.classList.contains('minus-btn')) {
+                players[index].score--;
+                renderScoreboard();
+                localStorage.setItem('players', JSON.stringify(players));
+            }
+        });
+
+        renderContestants();
+        renderScoreboard();
+        renderTopics();
+        
+        // Add event listener for topic management (add and remove)
+        document.getElementById('topicsManager').addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-topic-btn')) {
+                const index = parseInt(e.target.dataset.index);
+                const topicToDelete = topics[index];
+                
+                // Add to deleted topics list
+                if (!deletedTopics.includes(topicToDelete)) {
+                    deletedTopics.push(topicToDelete);
+                    localStorage.setItem('deletedTopics', JSON.stringify(deletedTopics));
+                }
+                
+                // Remove from current topics and re-render
+                topics.splice(index, 1);
+                renderTopics();
+                localStorage.setItem('topics', JSON.stringify(topics));
+            } else if (e.target.id === 'addTopicBtn') {
+                addNewTopic();
+            }
+        });
+        
+        // Add event listener for Enter key in new topic input
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('newTopic').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    addNewTopic();
+                }
+            });
+        });
+        
+        function addNewTopic() {
+            const newTopicInput = document.getElementById('newTopic');
+            const topicName = newTopicInput.value.trim();
+            
+            if (topicName) {
+                topics.push(topicName);
+                newTopicInput.value = '';
+                renderTopics();
+                localStorage.setItem('topics', JSON.stringify(topics));
+            }
+        }
+    </script>
+</body>
+</html>
