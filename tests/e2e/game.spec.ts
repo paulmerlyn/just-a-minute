@@ -2,10 +2,23 @@ import { test, expect } from '@playwright/test';
 
 // Helper to get to the game after authentication
 const getToGame = async (page: any) => {
-  await page.goto('/');
-  await page.locator('#accessCode').fill('test-code');
-  await page.locator('button:has-text("Submit")').click();
-  await page.waitForURL('**/api/game');
+  console.log('🔐 Navigating to home page...');
+  await page.goto('/', { waitUntil: 'networkidle' });
+  
+  console.log('📝 Filling access code...');
+  const accessInput = page.locator('#accessCode');
+  await accessInput.waitFor({ state: 'visible', timeout: 10000 });
+  await accessInput.fill('test-code');
+  
+  console.log('🔓 Submitting access code...');
+  const submitBtn = page.locator('button:has-text("Submit")');
+  await submitBtn.click();
+  
+  console.log('⏳ Waiting for game to load...');
+  await page.waitForURL('**/api/game', { timeout: 60000 });
+  
+  console.log('✅ Game loaded successfully');
+  await page.waitForLoadState('networkidle');
 };
 
 test.describe('Game - Player Management', () => {

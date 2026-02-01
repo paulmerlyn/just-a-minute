@@ -5,6 +5,7 @@
   "description": "project 60 white-label digital family and friends edition of BBC's Just a Minute game format",
   "scripts": {
     "dev": "npm run obfuscate && next dev",
+    "dev:test": "next dev",
     "build": "npm run obfuscate && next build",
     "start": "next start",
     "lint": "next lint",

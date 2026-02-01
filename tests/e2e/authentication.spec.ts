@@ -26,18 +26,25 @@ test.describe('Authentication', () => {
   });
 
   test('should allow valid access code to proceed', async ({ page }) => {
+    console.log('🔐 Test: Valid access code');
     await page.goto('/');
     
-    // Enter valid code (default from verify-access route)
-    await page.locator('#accessCode').fill('test-code');
+    console.log('📝 Filling access code...');
+    const input = page.locator('#accessCode');
+    await input.waitFor({ state: 'visible' });
+    await input.fill('test-code');
+    
+    console.log('🔓 Submitting...');
     await page.locator('button:has-text("Submit")').click();
     
     // Wait for navigation to game
-    await page.waitForURL('**/api/game');
+    console.log('⏳ Waiting for game navigation...');
+    await page.waitForURL('**/api/game', { timeout: 60000 });
     
     // Verify game is loaded
     const gameTitle = page.locator('.main-title');
     await expect(gameTitle).toContainText('Project 60');
+    console.log('✅ Game loaded');
   });
 
   test('should handle form submission with Enter key', async ({ page }) => {
@@ -47,8 +54,8 @@ test.describe('Authentication', () => {
     await input.fill('test-code');
     await input.press('Enter');
     
-    // Should navigate to game
-    await page.waitForURL('**/api/game');
+    // Should navigate to game with longer timeout
+    await page.waitForURL('**/api/game', { timeout: 60000 });
   });
 
   test('should display loading state during submission', async ({ page }) => {

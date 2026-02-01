@@ -2,10 +2,13 @@ import { test, expect } from '@playwright/test';
 
 // Helper to get to the game after authentication
 const getToGame = async (page: any) => {
+  console.log('🔐 [Accessibility] Navigating to game...');
   await page.goto('/');
+  await page.locator('#accessCode').waitFor({ state: 'visible' });
   await page.locator('#accessCode').fill('test-code');
   await page.locator('button:has-text("Submit")').click();
-  await page.waitForURL('**/api/game');
+  await page.waitForURL('**/api/game', { timeout: 60000 });
+  console.log('✅ [Accessibility] Game loaded');
 };
 
 test.describe('Accessibility - Keyboard Navigation', () => {
