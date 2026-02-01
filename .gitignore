@@ -5,6 +5,9 @@
 
 # Testing
 /coverage
+/test-results/
+test-output.log
+.last-run.json
 
 # Playwright
 /tests-results/
