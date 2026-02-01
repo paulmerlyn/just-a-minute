@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Authentication', () => {
-  test('should display access code form on initial load', async ({ page }) => {
+  test('@critical should display access code form on initial load', async ({ page }) => {
     await page.goto('/');
     
     // Check for access code input
@@ -13,7 +13,7 @@ test.describe('Authentication', () => {
     await expect(button).toBeVisible();
   });
 
-  test('should show error for invalid access code', async ({ page }) => {
+  test('@critical should show error for invalid access code', async ({ page }) => {
     await page.goto('/');
     
     // Enter invalid code
@@ -25,7 +25,7 @@ test.describe('Authentication', () => {
     await expect(error).toContainText('Invalid access code');
   });
 
-  test('should allow valid access code to proceed', async ({ page }) => {
+  test('@critical should allow valid access code to proceed', async ({ page }) => {
     console.log('🔐 Test: Valid access code');
     await page.goto('/');
     

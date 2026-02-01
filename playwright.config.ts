@@ -45,11 +45,21 @@ export default defineConfig({
   timeout: 60000,
 
   /* Configure projects for major browsers */
-  /* NOTE: Run only Chromium for faster feedback. Add Firefox/WebKit after all tests pass */
+  /* Full test suite on Chromium, critical auth test on Firefox/WebKit for compatibility */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+      grep: /@critical|Authentication/, // Run all tests tagged @critical + all auth tests
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+      grep: /@critical|Authentication/, // Run all tests tagged @critical + all auth tests
     },
   ],
 
