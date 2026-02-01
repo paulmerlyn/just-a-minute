@@ -6,6 +6,12 @@
 # Testing
 /coverage
 
+# Playwright
+/tests-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 # Next.js build output
 /.next/
 /out/
