@@ -269,10 +269,21 @@
       margin: 6px 0;
     }
 
-    .scoring-details ol {
-      margin-left: 16px;
-      margin-top: 6px;
-      margin-bottom: 6px;
+    .scoring-details ul {
+      padding-left: 32px;
+      color: #555;
+      list-style-type: none;
+      margin: 8px 0;
+    }
+
+    .scoring-details ul li::before {
+      content: "•";
+      color: #3498db;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      font-size: 1.2em;
     }
 
     summary {
@@ -1193,12 +1204,12 @@
 
       <details class="inner-details scoring-details" style="border: 1px solid #eaeaea;">
         <summary>Scoring</summary>
-        <ol>
-          <li>One point for the player speaking at the one-minute mark</li>
-          <li>One point to the challenger for a correct challenge</li>
-          <li>One point to the speaker for an incorrect challenge</li>
-          <li>One bonus point to a speaker who completes an entire minute</li>
-        </ol>
+        <ul style="line-height: 0.5;">
+          <li style="line-height: 0.8;">One point for the player speaking at the one-minute mark</li>
+          <li style="line-height: 0.8;">One point to the challenger for a correct challenge</li>
+          <li style="line-height: 0.8;">One point to the speaker for an incorrect challenge</li>
+          <li style="line-height: 0.8;">One bonus point to a speaker who completes an entire minute</li>
+        </ul>
       </details>
       <div id="timer" role="region" aria-label="Game Timer">
         <div class="timer-controls-container">
