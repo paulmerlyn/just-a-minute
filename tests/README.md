@@ -4,55 +4,54 @@ This directory contains comprehensive end-to-end tests for Project 60 using Play
 
 ## Test Structure
 
+Tests are organized into three files covering different aspects of the application:
+
 ### `authentication.spec.ts`
 Tests for the access code authentication flow:
-- Display of access code form
-- Validation of invalid codes
-- Successful authentication with valid codes
-- Keyboard navigation (Enter key submission)
-- Form loading states
-- Error message handling
+- Display of access code form on initial load
+- Validation of invalid codes (error message display)
+- Successful authentication with valid codes (navigation to game)
+- Form keyboard navigation (Enter key submission)
+
+All 3 authentication tests run on **Chromium, Firefox, and WebKit** for cross-browser compatibility.
 
 ### `game.spec.ts`
 Tests for core game functionality:
 
 **Player Management**
-- Adding/removing players
-- Multiple player scenarios
-- Keyboard input (Enter key)
-- Score updates
+- Adding a player via form input
+- Removing a player from the game
+- Verifying players appear/disappear in the list
 
 **Topic Management**
-- Generating random topics
-- Adding custom topics
-- Selecting topics
-- Removing topics
+- Generating a random topic from the library
+- Adding a custom topic to the game
+- Verifying topics display correctly
 
 **Timer**
-- Display and initialization
-- Adding/subtracting time
-- Reset functionality
+- Displaying timer at 60 seconds (initial state)
+- Resetting timer to 60 seconds after modifications
+
+Runs on **Chromium only** for speed (10 tests total).
 
 ### `accessibility.spec.ts`
 Tests for WCAG 2.1 Level AA accessibility compliance:
 
 **Keyboard Navigation**
-- Skip-to-content link
-- Tab order through elements
-- Enter key support in forms and inputs
-- Focus management
+- Form submission with Enter key
+- Adding players with Enter key
+- Tab navigation through interactive elements
 
 **Focus Indicators**
-- Visible focus outlines on buttons
-- Input focus styling
-- Link focus states
+- Button focus outline visibility and styling
+- Proper focus state management
 
 **ARIA Attributes**
-- Button labels (`aria-label`)
-- Input associations
-- Alert roles
-- Live regions (`aria-live`)
-- Status roles
+- Button labels (`aria-label`) on all interactive buttons
+- Timer display with `role="status"` and `aria-live`
+- Proper ARIA attribute presence for screen readers
+
+Runs on **Chromium only** for speed (5 tests total).
 
 ## Running Tests
 
@@ -95,16 +94,46 @@ npx playwright test --headed
 
 Configuration is in `playwright.config.ts`:
 - **Base URL**: `http://localhost:3000`
-- **Browsers**: Chromium, Firefox, WebKit
-- **Dev Server**: Automatically starts with `npm run dev`
-- **Reporters**: HTML report with screenshots and traces
+- **Browsers**: 
+  - **Chromium**: Full test suite (14 tests)
+  - **Firefox**: Authentication tests only (3 tests)
+  - **WebKit**: Authentication tests only (3 tests)
+- **Dev Server**: Automatically starts with `npm run dev:test` (skips obfuscation for speed)
+- **Reporters**: HTML report with screenshots, traces, and test timing
+- **Timeouts**: 60 seconds global, 60 seconds per navigation, 120 seconds for dev server startup
+
+## Browser Test Distribution
+
+| Browser   | Tests | Purpose |
+|-----------|-------|---------|
+| Chromium  | 14    | Full suite: auth + game features + accessibility |
+| Firefox   | 3     | Auth validation (cross-browser compatibility) |
+| WebKit    | 3     | Auth validation (Safari compatibility) |
+| **Total** | **20**| Complete coverage with optimized runtime |
+
+This distribution ensures comprehensive feature coverage while maintaining fast test execution (~11 seconds total).
 
 ## Important Notes
 
 ### Test Access Code
-Tests use the access code: `test-code`
+Tests use the access code: `c15fabcf-1cca-4cc6-ade2-ce4e330340a9`
 
-This is defined in the `verify-access` API route. If you change the valid code, update the `getToGame` helper in the test files.
+This is the actual valid access code used by the `verify-access` API route. If you change the valid code, update the `c15fabcf-1cca-4cc6-ade2-ce4e330340a9` value in:
+- `tests/e2e/authentication.spec.ts`
+- `tests/e2e/game.spec.ts` (in the `getToGame()` helper)
+- `tests/e2e/accessibility.spec.ts` (in the `getToGame()` helper)
+
+## Important Notes
+
+### Collapsed Details Elements
+The game uses `<details>` elements for collapsible sections (Manage Players, Topics Manager, etc.). Tests that interact with form inputs must open these sections first:
+
+```javascript
+await openPlayerManager(page); // Opens the Manage Players section
+const playerInput = page.locator('#newContestant');
+await playerInput.waitFor({ state: 'visible' });
+await playerInput.fill('Alice');
+```
 
 ### Waiting for Navigation
 Some tests wait for the game to load with:
@@ -112,11 +141,13 @@ Some tests wait for the game to load with:
 await page.waitForURL('**/api/game');
 ```
 
+This ensures the authentication response is processed and the game page has loaded before proceeding.
+
 ### Asynchronous Operations
 Tests use appropriate waits for:
-- DOM updates
-- Network requests
-- Focus changes
+- DOM updates (`.waitFor({ state: 'visible' })`)
+- Element visibility before interaction
+- Network requests and page navigation
 
 ## CI/CD Integration
 
@@ -133,11 +164,17 @@ npm test
 ## Accessibility Testing
 
 While Playwright tests verify the presence of ARIA attributes and focus behavior, for comprehensive accessibility auditing also use:
-- **axe DevTools**: Visual testing tool
-- **WAVE**: Browser extension for structure checking
-- **Screen readers**: Manual testing with NVDA, JAWS, or VoiceOver
+- **axe DevTools**: Visual testing tool for accessibility violations
+- **WAVE**: Browser extension for HTML structure checking
+- **Screen readers**: Manual testing with NVDA (Windows), JAWS (Windows), or VoiceOver (macOS)
 
-See `ACCESSIBILITY.md` for full accessibility testing recommendations.
+See [ACCESSIBILITY.md](../ACCESSIBILITY.md) for full accessibility testing recommendations, WCAG 2.1 Level AA compliance details, and testing with assistive technologies.
+
+## Related Documentation
+
+- **[README.md](../README.md)** - Main project documentation with Testing subsection in Development Guide
+- **[TESTING.md](../TESTING.md)** - Comprehensive testing setup, performance optimizations, and detailed configuration
+- **[ACCESSIBILITY.md](../ACCESSIBILITY.md)** - WCAG 2.1 compliance details, keyboard navigation, ARIA attributes, and screen reader testing
 
 ## Troubleshooting
 

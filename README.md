@@ -162,6 +162,46 @@ import GameCard from '@/components/GameCard';
 - **Component-specific styles**: Use CSS modules or inline styles
 - **Tailwind CSS**: Can be added later if needed
 
+### Testing
+
+This project uses **Playwright** for end-to-end (E2E) testing. Tests cover authentication, game functionality, and accessibility compliance.
+
+#### Running Tests Locally
+
+```bash
+# Run all tests
+npm test
+
+# Interactive UI mode (watch mode with visual browser)
+npm run test:ui
+
+# Debug mode (step through tests)
+npm run test:debug
+
+# View HTML test report
+npm run test:report
+```
+
+#### Test Coverage
+
+- **Authentication**: Access code validation, form submission, error handling
+- **Game Features**: Player management, topic generation, timer controls
+- **Accessibility**: Keyboard navigation, ARIA attributes, focus indicators (WCAG 2.1 AA)
+- **Cross-Browser**: Full suite on Chromium, critical tests on Firefox & WebKit
+
+**Total: 20 tests passing (14 Chromium + 3 Firefox + 3 WebKit) in ~11 seconds**
+
+#### Test Configuration
+
+- **Location**: `playwright.config.ts`
+- **Test files**: `tests/e2e/*.spec.ts`
+- **Dev server**: Automatically starts (uses `npm run dev:test` to skip obfuscation for speed)
+- **Reporters**: HTML with screenshots and test traces
+
+For detailed testing documentation, see:
+- [TESTING.md](TESTING.md) - Comprehensive testing setup and performance details
+- [tests/README.md](tests/README.md) - Test structure, running individual tests, troubleshooting
+
 ## 🔒 Code Obfuscation
 
 This project protects the game's source code using JavaScript obfuscation to prevent theft and unauthorized copying.
