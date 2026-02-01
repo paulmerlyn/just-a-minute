@@ -54,35 +54,50 @@ export default function Home() {
         maxWidth: '400px',
         textAlign: 'center'
       }}>
+        <h1 style={{ marginBottom: '1.5rem', fontSize: '2rem', fontWeight: 700 }}>Project 60</h1>
+        
         <form onSubmit={handleSubmit}>
+          <label htmlFor="accessCode" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>
+            Access Code
+          </label>
           <input
+            id="accessCode"
             type="text"
             value={accessCode}
             onChange={(e) => setAccessCode(e.target.value)}
             placeholder="Enter access code"
             required
             disabled={isLoading}
+            aria-label="Access code input"
+            aria-describedby={error ? "error-message" : undefined}
             style={{
               width: '100%',
               padding: '0.75rem 1rem',
               fontSize: '1rem',
-              border: '1px solid #000000',
+              border: '2px solid #000000',
               borderRadius: '5px',
               marginBottom: '1rem',
               outline: 'none',
-              opacity: isLoading ? 0.6 : 1
+              opacity: isLoading ? 0.6 : 1,
             }}
-            onFocus={(e) => e.target.style.borderColor = '#0070f3'}
-            onBlur={(e) => e.target.style.borderColor = '#000000'}
+            onFocus={(e) => e.currentTarget.style.borderColor = '#0070f3'}
+            onBlur={(e) => e.currentTarget.style.borderColor = '#000000'}
           />
 
           {error && (
-            <div style={{
-              color: '#d32f2f',
-              fontSize: '0.9rem',
-              marginBottom: '1rem',
-              textAlign: 'left'
-            }}>
+            <div 
+              id="error-message"
+              role="alert"
+              style={{
+                color: '#d32f2f',
+                fontSize: '0.9rem',
+                marginBottom: '1rem',
+                textAlign: 'left',
+                padding: '0.75rem',
+                backgroundColor: '#ffebee',
+                borderRadius: '4px',
+                border: '1px solid #ef5350'
+              }}>
               {error}
             </div>
           )}
@@ -91,6 +106,7 @@ export default function Home() {
             type="submit"
             className="btn btn-primary"
             disabled={isLoading}
+            aria-busy={isLoading}
             style={{
               width: '100%',
               padding: '0.75rem 1rem',

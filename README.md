@@ -1,10 +1,11 @@
 # Project-60
 
-Welcome to Project 60! This is a Next.js-based site that white-labels a digitl family-and-friends variant of the BBC's popular Just-a-Minute game format.
+Welcome to Project 60! This is a Next.js-based site that white-labels a digital family-and-friends edition of the BBC's popular Just-a-Minute game format. This edition targets both at-home and synchronous shared play, including remote participants when used alongside existing third-party video conferencing tools.
 
 ## 🎯 Project Overview
 
 This site is built with:
+
 - **Next.js 14+** with the App Router
 - **TypeScript** for type safety
 - **Vercel** for hosting and deployment
@@ -13,35 +14,44 @@ The site serves a web-based game as a protected HTML file, accessible only with 
 
 ## 📋 Table of Contents
 
-- [Getting Started](#getting-started)
+- [About the Game](#-about-the-game)
+- [Accessibility & WCAG Compliance](#accessibility--wcag-compliance)
 - [Project Structure](#project-structure)
 - [Development Guide](#development-guide)
 - [Code Obfuscation](#code-obfuscation)
 - [Deployment](#deployment)
-- [Common Issues](#common-issues)
+- [Key Next.js Concepts](#-key-nextjs-concepts)
+- [Development Workflow](#-development-workflow)
+- [Common Issues](#-common-issues)
+- [Further Reading](#-further-reading)
 
-## 🚀 Getting Started
+## 🎮 About the Game
 
-### Prerequisites
+Project 60 is a digital family-and-friends edition of the BBC's popular **Just-a-Minute** game format. Players take turns speaking on a given topic for one minute without hesitation, deviation, or repetition. The game features a built-in scoreboard, timer, topic library, and customizable rules.
 
-- Node.js 18.0 or later
-- npm or yarn package manager
-- A Vercel account (for deployment)
+Key features include:
 
-### Installation
+- Player registration and score tracking
+- Extensive topic library with custom topic support
+- 60-second timer with audio feedback
+- Real-time scoreboard updates
+- Complete game rules reference
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+For comprehensive game information, features, rules, and technical details, see [game-README.md](game-README.md).
 
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+## ♿ Accessibility & WCAG Compliance
 
-3. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+This project is built with accessibility in mind and complies with **WCAG 2.1 Level AA** standards. We're committed to ensuring the game is usable by everyone, including people with disabilities.
+
+The application includes:
+
+- Full keyboard navigation support
+- Screen reader compatibility with ARIA labels and live regions
+- High contrast text and focus indicators
+- Semantic HTML structure
+- Accessible form controls and error messaging
+
+For detailed information about accessibility features, implementation details, testing guidelines, and compliance verification, see our [ACCESSIBILITY.md](ACCESSIBILITY.md) documentation.
 
 ## 📁 Project Structure
 
@@ -75,16 +85,43 @@ Next.js 14+ uses the **App Router**, which is different from the older Pages Rou
 
 ## 💻 Development Guide
 
+### Local Development
+
+#### Prerequisites
+
+- Node.js 18.0 or later
+- npm or yarn package manager
+- A Vercel account (for deployment)
+
+#### Installation
+
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
 ### Adding a New Page
 
 To add a new page (e.g., an About page):
 
 1. Create a new folder in `src/app/` with the route name:
+
    ```
    src/app/about/
    ```
 
 2. Create a `page.tsx` file inside:
+
    ```typescript
    export default function About() {
      return (
@@ -114,8 +151,9 @@ export default function GameCard({ title }: { title: string }) {
 ```
 
 Then import and use:
+
 ```typescript
-import GameCard from '@/components/GameCard'
+import GameCard from '@/components/GameCard';
 ```
 
 ### Styling
@@ -145,6 +183,7 @@ npm run dev
 ```
 
 This will:
+
 1. Run `node obfuscate.js` to generate `game.obfuscated.html`
 2. Start the Next.js development server
 
@@ -194,25 +233,30 @@ The obfuscation uses a **minimal, functional approach** that balances IP protect
    - Removes whitespace and comments
    - Reduces file size and readability
 
-#### ❌ Disabled Features (Broke Functionality):
-
-These aggressive features were disabled because they broke the game's timer, topics manager, scoreboard, and player management:
-
-- ❌ **Control Flow Flattening** - Broke execution context for HTML inline event handlers
-- ❌ **Dead Code Injection** - Interfered with critical code paths
-- ❌ **Self-Defending Code** - Prevented normal execution
-- ❌ **Transform Object Keys** - Broke object property access
-- ❌ **Numbers to Expressions** - Created parsing issues
-
 #### Reserved Names
 
 These function and variable names are preserved to maintain compatibility with HTML inline event handlers:
 
 ```javascript
-startTimer, stopTimer, resetTimer, add5, sub5, resumeTimer,
-updateDisplay, playCelebratorySound, renderContestants,
-renderScoreboard, renderTopics, addNewTopic, ALL_TOPICS,
-topics, players, deletedTopics, timeLeft, timerId, isRunning
+(startTimer,
+  stopTimer,
+  resetTimer,
+  add5,
+  sub5,
+  resumeTimer,
+  updateDisplay,
+  playCelebratorySound,
+  renderContestants,
+  renderScoreboard,
+  renderTopics,
+  addNewTopic,
+  ALL_TOPICS,
+  topics,
+  players,
+  deletedTopics,
+  timeLeft,
+  timerId,
+  isRunning);
 ```
 
 ### Production Build
@@ -243,14 +287,14 @@ const obfuscator = require('javascript-obfuscator');
 
 module.exports = {
   compact: true,
-  controlFlowFlattening: false,     // ❌ Disabled
-  deadCodeInjection: false,         // ❌ Disabled  
-  selfDefending: false,             // ❌ Disabled
-  transformObjectKeys: false,       // ❌ Disabled
+  controlFlowFlattening: false, // ❌ Disabled
+  deadCodeInjection: false, // ❌ Disabled
+  selfDefending: false, // ❌ Disabled
+  transformObjectKeys: false, // ❌ Disabled
   identifierNamesGenerator: 'hexadecimal',
   stringArray: true,
   stringArrayEncoding: ['base64'],
-  splitStrings: true
+  splitStrings: true,
 };
 ```
 
@@ -287,12 +331,14 @@ node obfuscate.js
 ### Security Considerations
 
 #### What Obfuscation Provides:
+
 ✅ Makes code extremely difficult to read and understand  
 ✅ Prevents casual copying and modification  
 ✅ Protects against automated code analysis  
 ✅ Significantly increases reverse-engineering effort and time
 
 #### What Obfuscation DOES NOT Provide:
+
 ❌ **Complete protection** - Determined attackers with sufficient time and skill can still reverse-engineer  
 ❌ **Encryption** - Code must be readable by the browser's JavaScript engine  
 ❌ **Security for sensitive data** - Never store API keys, passwords, or secrets in client-side code
@@ -329,6 +375,7 @@ This code is protected by copyright law and international treaties.
 ### Deploying to Vercel
 
 1. **Install Vercel CLI** (optional):
+
    ```bash
    npm i -g vercel
    ```
@@ -346,6 +393,8 @@ This code is protected by copyright law and international treaties.
 
 After deployment, you can add a custom domain in Vercel project settings.
 
+For comprehensive deployment instructions, environment variable setup, and production considerations, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## 📚 Key Next.js Concepts
 
 ### Server vs Client Components
@@ -356,6 +405,7 @@ In Next.js 14+ with App Router:
 - **Client Components**: Need the `'use client'` directive at the top, used for interactivity
 
 Example:
+
 ```typescript
 'use client' // This makes it a Client Component
 
@@ -374,7 +424,7 @@ API routes are serverless functions:
 ```typescript
 // src/app/api/hello/route.ts
 export async function GET(request: Request) {
-  return Response.json({ message: 'Hello!' })
+  return Response.json({ message: 'Hello!' });
 }
 ```
 
@@ -409,6 +459,7 @@ export default async function Page() {
 ## 🆘 Common Issues
 
 ### Port 3000 already in use
+
 ```bash
 # Kill the process using port 3000
 lsof -ti:3000 | xargs kill -9
@@ -417,6 +468,7 @@ npm run dev -- -p 3001
 ```
 
 ### TypeScript errors
+
 ```bash
 # Delete .next and node_modules, then reinstall
 rm -rf .next node_modules
@@ -424,6 +476,7 @@ npm install
 ```
 
 ### Obfuscated game not working
+
 - Hard refresh browser (Cmd+Shift+R or Ctrl+Shift+R)
 - Check browser console for JavaScript errors
 - Verify `game.obfuscated.html` exists and was recently regenerated

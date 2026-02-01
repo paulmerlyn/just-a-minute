@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project 60</title>
+  <meta name="description" content="Project 60 - White-Label Game Engine" />
+  <title>Project 60 - White-Label Game Engine</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.ico" />
@@ -21,6 +22,10 @@
       padding: 24px;
       color: #333;
       line-height: 1.6;
+    }
+
+    .skip-link:focus {
+      top: 0;
     }
 
     .title-container {
@@ -157,7 +162,7 @@
       font-size: 1rem;
       background-color: #3498db;
       color: white;
-      border: none;
+      border: 2px solid #3498db;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 16px;
@@ -169,8 +174,14 @@
 
     button:hover {
       background-color: #2980b9;
+      border-color: #2980b9;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    }
+
+    button:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     button:active {
@@ -263,6 +274,11 @@
       color: #3498db;
     }
 
+    summary:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
+    }
+
     summary::after {
       content: '▼';
       font-size: 0.8rem;
@@ -298,10 +314,21 @@
       font-family: 'Inter', sans-serif;
     }
 
+    input[type="text"] {
+      border: 2px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
+      border-color: #3498db;
+    }
+
     textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #ddd;
+      border: 2px solid #ccc;
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
       box-sizing: border-box;
@@ -310,7 +337,8 @@
     }
 
     textarea:focus {
-      outline: none;
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
       border-color: #3498db;
       box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
     }
@@ -326,7 +354,7 @@
       flex: 1;
       height: 40px;
       padding: 8px 12px;
-      border: 1px solid #ddd;
+      border: 2px solid #ccc;
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
       box-sizing: border-box;
@@ -337,7 +365,8 @@
     }
 
     #newContestant:focus {
-      outline: none;
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
       border-color: #3498db;
       box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
     }
@@ -348,7 +377,7 @@
       font-size: 1.2rem;
       background-color: #3498db;
       color: white;
-      border: none;
+      border: 2px solid #3498db;
       border-radius: 8px;
       cursor: pointer;
       box-sizing: border-box;
@@ -362,7 +391,13 @@
 
     #addContestant:hover {
       background-color: #2980b9;
+      border-color: #2980b9;
       transform: scale(1.05);
+    }
+
+    #addContestant:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     .contestant-item {
@@ -381,7 +416,7 @@
     .remove-btn {
       background-color: #e74c3c;
       color: white;
-      border: none;
+      border: 2px solid #e74c3c;
       border-radius: 6px;
       cursor: pointer;
       padding: 6px 12px;
@@ -393,11 +428,18 @@
 
     .remove-btn:hover {
       background-color: #c0392b;
+      border-color: #c0392b;
       transform: scale(1.05);
+    }
+
+    .remove-btn:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     .remove-btn:active {
       background-color: #a02e22;
+      border-color: #a02e22;
       transform: scale(0.9);
     }
 
@@ -422,7 +464,7 @@
     .minus-btn {
       padding: 6px 12px;
       font-size: 0.9rem;
-      border: none;
+      border: 2px solid;
       border-radius: 6px;
       cursor: pointer;
       margin-left: 4px;
@@ -435,22 +477,36 @@
 
     .plus-btn {
       background-color: #2ecc71;
+      border-color: #2ecc71;
       color: white;
     }
 
     .plus-btn:hover {
       background-color: #27ae60;
+      border-color: #27ae60;
       transform: scale(1.05);
+    }
+
+    .plus-btn:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     .minus-btn {
       background-color: #e74c3c;
+      border-color: #e74c3c;
       color: white;
     }
 
     .minus-btn:hover {
       background-color: #c0392b;
+      border-color: #c0392b;
       transform: scale(1.05);
+    }
+
+    .minus-btn:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     .score {
@@ -502,7 +558,7 @@
     .remove-topic-btn {
       background-color: #e74c3c;
       color: white;
-      border: none;
+      border: 2px solid #e74c3c;
       border-radius: 6px;
       cursor: pointer;
       padding: 6px 12px;
@@ -514,11 +570,18 @@
 
     .remove-topic-btn:hover {
       background-color: #c0392b;
+      border-color: #c0392b;
       transform: scale(1.05);
+    }
+
+    .remove-topic-btn:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     .remove-topic-btn:active {
       background-color: #a02e22;
+      border-color: #a02e22;
       transform: scale(0.9);
     }
 
@@ -724,12 +787,19 @@
 
     .select-topic-btn:hover {
       background-color: #27ae60;
+      border-color: #27ae60;
       transform: scale(1.05);
+    }
+
+    .select-topic-btn:focus {
+      outline: 3px solid #0070f3;
+      outline-offset: 2px;
     }
 
     /* Click animation for select button */
     .select-topic-btn:active {
       background-color: #1e8449;
+      border-color: #1e8449;
       transform: scale(0.9);
     }
 
@@ -1046,93 +1116,100 @@
 </head>
 
 <body>
-  <div class="title-container">
-    <h1 class="main-title">Project 60</h1>
-    <p class="subtitle">Family & Friends Edition</p>
-  </div>
-  <div id="rules">
-    <details class="inner-details" style="border: 1px solid #eaeaea;">
-      <summary>Gameplay</summary>
-      <p style="line-height: 1.2;">Add players via the <strong>Manage Players</strong> panel. Generate (or select) a
-        topic. Start the timer. The active player must speak for one minute without:</p>
-      <ul style="line-height: 0.5;">
-        <li style="line-height: 0.8;">hesitation</li>
-        <li style="line-height: 0.8;">deviation</li>
-        <li style="line-height: 0.8;">repetition</li>
-      </ul>
-      <p style="line-height: 1.2;">Stop the clock when another player challenges the speaker.</p>
-      <p style="line-height: 1.2;">For a correct challenge of hesitation, deviation, or repetition, the challenger
-        continues the topic with the time remaining.</p>
-      <p style="line-height: 1.2;">For an incorrect challenge, the speaker resumes.</p>
-      <p style="line-height: 1.2;">When the minute is up, rotate to the next player.</p>
-      <p style="line-height: 1.2;">Min. 3 players. One player (not the speaker) volunteers to start/stop the 1-minute
-        timer.</p>
-    </details>
-    <details class="inner-details" style="border: 1px solid #eaeaea;">
-      <summary>Finer Points</summary>
-      <p style="text-align: left; line-height: 1.8;">
-        <strong><em>Hesitation</em></strong> means noticeable ums, pauses, lip-smacks, etc.<br>
-        <strong><em>Deviation</em></strong> means straying off topic (though brief tangents are allowable if the speaker
-        returns to the topic).<br>
-        <strong><em>Repetition</em></strong> means excessive reuse of a word. Exceptions: words in the topic and common
-        link or short words such as "and", "a", and "the" are allowable.<br>
-        <strong><em>Plural</em></strong> forms (e.g. cat and cats) and <strong><em>derivatives</em></strong> (e.g. bake,
-        baking, and baked) are distinct words and may each be used once.<br>
-      </p>
-    </details>
+  <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 0; background: #0070f3; color: white; padding: 8px; text-decoration: none; z-index: 100;">Skip to main content</a>
+  
+  <main id="main-content">
+    <div class="title-container">
+      <h1 class="main-title">Project 60</h1>
+      <p class="subtitle">Family & Friends Edition</p>
+    </div>
+    <div id="rules" role="region" aria-label="Game Rules">
+      <details class="inner-details" style="border: 1px solid #eaeaea;">
+        <summary>Gameplay</summary>
+        <p style="line-height: 1.2;">Add players via the <strong>Manage Players</strong> panel. Generate (or select) a
+          topic. Start the timer. The active player must speak for one minute without:</p>
+        <ul style="line-height: 0.5;">
+          <li style="line-height: 0.8;">hesitation</li>
+          <li style="line-height: 0.8;">deviation</li>
+          <li style="line-height: 0.8;">repetition</li>
+        </ul>
+        <p style="line-height: 1.2;">Stop the clock when another player challenges the speaker.</p>
+        <p style="line-height: 1.2;">For a correct challenge of hesitation, deviation, or repetition, the challenger
+          continues the topic with the time remaining.</p>
+        <p style="line-height: 1.2;">For an incorrect challenge, the speaker resumes.</p>
+        <p style="line-height: 1.2;">When the minute is up, rotate to the next player.</p>
+        <p style="line-height: 1.2;">Min. 3 players. One player (not the speaker) volunteers to start/stop the 1-minute
+          timer.</p>
+      </details>
+      <details class="inner-details" style="border: 1px solid #eaeaea;">
+        <summary>Finer Points</summary>
+        <p style="text-align: left; line-height: 1.8;">
+          <strong><em>Hesitation</em></strong> means noticeable ums, pauses, lip-smacks, etc.<br>
+          <strong><em>Deviation</em></strong> means straying off topic (though brief tangents are allowable if the speaker
+          returns to the topic).<br>
+          <strong><em>Repetition</em></strong> means excessive reuse of a word. Exceptions: words in the topic and common
+          link or short words such as "and", "a", and "the" are allowable.<br>
+          <strong><em>Plural</em></strong> forms (e.g. cat and cats) and <strong><em>derivatives</em></strong> (e.g. bake,
+          baking, and baked) are distinct words and may each be used once.<br>
+        </p>
+      </details>
 
-    <details class="inner-details scoring-details" style="border: 1px solid #eaeaea;">
-      <summary>Scoring</summary>
-      <ol>
-        <li>One point for the player speaking at the one-minute mark</li>
-        <li>One point to the challenger for a correct challenge</li>
-        <li>One point to the speaker for an incorrect challenge</li>
-        <li>One bonus point to a speaker who completes an entire minute</li>
-      </ol>
-    </details>
-    <div id="timer">
-      <div class="timer-controls-container">
-        <div class="timer-buttons">
-          <button onclick="startTimer()">Start</button>
-          <button onclick="stopTimer()">Stop</button>
-          <button onclick="add5()">+5</button>
-          <button onclick="sub5()">-5</button>
-          <button onclick="resetTimer()">Reset</button>
+      <details class="inner-details scoring-details" style="border: 1px solid #eaeaea;">
+        <summary>Scoring</summary>
+        <ol>
+          <li>One point for the player speaking at the one-minute mark</li>
+          <li>One point to the challenger for a correct challenge</li>
+          <li>One point to the speaker for an incorrect challenge</li>
+          <li>One bonus point to a speaker who completes an entire minute</li>
+        </ol>
+      </details>
+      <div id="timer" role="region" aria-label="Game Timer">
+        <div class="timer-controls-container">
+          <div class="timer-buttons">
+            <button onclick="startTimer()" aria-label="Start timer">Start</button>
+            <button onclick="stopTimer()" aria-label="Stop timer">Stop</button>
+            <button onclick="add5()" aria-label="Add 5 seconds to timer">+5</button>
+            <button onclick="sub5()" aria-label="Subtract 5 seconds from timer">-5</button>
+            <button onclick="resetTimer()" aria-label="Reset timer to 60 seconds">Reset</button>
+          </div>
+          <div id="timer-display" role="status" aria-live="polite" aria-label="Time remaining in seconds">60</div>
         </div>
-        <div id="timer-display">60</div>
+      </div>
+      <div style="
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #eaeaea;
+          ">
+        <button id="generateBtn" style="background-color: #2ecc71; margin-bottom: 8px" aria-label="Generate a random topic">
+          Generate Topic
+        </button>
+        <div id="topicDisplay" role="status" aria-live="assertive" aria-label="Current topic">
+          <span aria-label="No topic selected yet">Select or generate a topic to begin</span>
+        </div>
+        <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
       </div>
     </div>
-    <div style="
-          margin-top: 24px;
-          padding-top: 24px;
-          border-top: 1px solid #eaeaea;
-        ">
-      <button id="generateBtn" style="background-color: #2ecc71; margin-bottom: 8px">
-        Generate Topic
-      </button>
-      <div id="topicDisplay"></div>
-      <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
-    </div>
-  </div>
-  <details style="border: 1px solid #eaeaea;">
-    <summary>Scoreboard</summary>
-    <div id="scoreboard"></div>
-  </details>
-  <details style="border: 1px solid #eaeaea;">
-    <summary>Manage Players</summary>
-    <div id="contestantManager">
-      <div
-        style="margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; border-radius: 5px; display: flex; gap: 12px; align-items: center;">
-        <input type="text" id="newContestant" placeholder="Enter player name" />
-        <button id="addContestant">+</button>
+    <details style="border: 1px solid #eaeaea;" role="region" aria-label="Scoreboard">
+      <summary>Scoreboard</summary>
+      <div id="scoreboard" role="list"></div>
+    </details>
+    <details style="border: 1px solid #eaeaea;" role="region" aria-label="Manage Players">
+      <summary>Manage Players</summary>
+      <div id="contestantManager">
+        <div
+          style="margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; border-radius: 5px; display: flex; gap: 12px; align-items: center;">
+          <label for="newContestant" style="font-weight: 600; margin: 0;">Player name:</label>
+          <input type="text" id="newContestant" placeholder="Enter player name" aria-label="Enter new player name" />
+          <button id="addContestant" aria-label="Add new player">+</button>
+        </div>
       </div>
-    </div>
-    <div id="contestantList"></div>
-  </details>
-  <details style="border: 1px solid #eaeaea;">
-    <summary>Topics Manager</summary>
-    <div id="topicsManager"></div>
-  </details>
+      <div id="contestantList"></div>
+    </details>
+    <details style="border: 1px solid #eaeaea;" role="region" aria-label="Manage Topics">
+      <summary>Topics Manager</summary>
+      <div id="topicsManager"></div>
+    </details>
+  </main>
 
   <script>
     // Topic management system with persistent deletions
@@ -1252,8 +1329,9 @@
       const topicsManager = document.getElementById('topicsManager');
       const formHTML =
         '<div style="margin-bottom: 15px; padding: 10px; background-color: #f9f9f9; border-radius: 5px; display: flex; gap: 12px; align-items: center;">' +
-        '<input type="text" id="newTopic" placeholder="Enter new topic" style="flex: 1; height: 40px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; font-family: \'Inter\', sans-serif; box-sizing: border-box; transition: border-color 0.3s ease; font-size: 1rem; line-height: 24px; vertical-align: middle;">' +
-        '<button id="addTopicBtn" style="height: 40px; width: 40px; font-size: 1.2rem; background-color: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; box-sizing: border-box; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; flex-shrink: 0; vertical-align: middle; margin-top: -2px;">+</button>' +
+        '<label for="newTopic" style="font-weight: 600; margin: 0;">New topic:</label>' +
+        '<input type="text" id="newTopic" placeholder="Enter new topic" aria-label="Enter new topic" style="flex: 1; height: 40px; padding: 8px 12px; border: 2px solid #ccc; border-radius: 8px; font-family: \'Inter\', sans-serif; box-sizing: border-box; transition: border-color 0.3s ease; font-size: 1rem; line-height: 24px; vertical-align: middle;">' +
+        '<button id="addTopicBtn" style="height: 40px; width: 40px; font-size: 1.2rem; background-color: #3498db; color: white; border: 2px solid #3498db; border-radius: 8px; cursor: pointer; box-sizing: border-box; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; flex-shrink: 0; vertical-align: middle; margin-top: -2px;" aria-label="Add new topic">+</button>' +
         '</div>';
 
       // Remove duplicates while preserving order
@@ -1276,17 +1354,17 @@
 
       let tableHTML =
         formHTML +
-        '<table style="width: 100%; border-collapse: collapse; margin-top: 10px;">';
+        '<table style="width: 100%; border-collapse: collapse; margin-top: 10px;" role="list">';
       tableHTML +=
         '<thead><tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Topic</th><th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Actions</th></tr></thead>';
       tableHTML += '<tbody>';
 
       uniqueTopics.forEach((topic, index) => {
-        tableHTML += `<tr style="border-bottom: 1px solid #eee;">
+        tableHTML += `<tr style="border-bottom: 1px solid #eee;" role="listitem">
                     <td style="padding: 8px;">${topic}</td>
                     <td style="padding: 8px; text-align: right; white-space: nowrap;">
-                        <button class="select-topic-btn" data-topic="${topic}" style="background-color: #2ecc71; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px; margin-right: 5px;">✓</button>
-                        <button class="remove-topic-btn" data-topic="${topic}" style="background-color: #f44336; color: white; border: none; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px;">–</button>
+                        <button class="select-topic-btn" data-topic="${topic}" style="background-color: #2ecc71; color: white; border: 2px solid #2ecc71; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px; margin-right: 5px;" aria-label="Set topic to ${topic.replace(/"/g, '&quot;')}">✓</button>
+                        <button class="remove-topic-btn" data-topic="${topic}" style="background-color: #f44336; color: white; border: 2px solid #f44336; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px;" aria-label="Remove topic ${topic.replace(/"/g, '&quot;')}">–</button>
                     </td>
                 </tr>`;
       });
@@ -1489,13 +1567,13 @@
         contestantList.innerHTML = '<p><em>No players added yet</em></p>';
         return;
       }
-      let tableHTML = '<table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; font-family: \'Inter\', sans-serif;">';
+      let tableHTML = '<table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; font-family: \'Inter\', sans-serif;" role="list">';
       tableHTML += '<thead><tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Player</th><th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Action</th></tr></thead>';
       tableHTML += '<tbody>';
       players.forEach((player, index) => {
-        tableHTML += `<tr style="border-bottom: 1px solid #eee;">
+        tableHTML += `<tr style="border-bottom: 1px solid #eee;" role="listitem">
                         <td style="padding: 8px;">${player.name}</td>
-                        <td style="padding: 8px; text-align: right;"><button class="remove-btn" data-index="${index}">–</button></td>
+                        <td style="padding: 8px; text-align: right;"><button class="remove-btn" data-index="${index}" aria-label="Remove player ${player.name.replace(/"/g, '&quot;')}">–</button></td>
                     </tr>`;
       });
       tableHTML += '</tbody></table>';
@@ -1515,7 +1593,8 @@
       players.forEach((player, index) => {
         const div = document.createElement('div');
         div.className = 'scoreboard-item';
-        div.innerHTML = `<span class="player-name">${player.name}</span> <span class="score">${player.score}</span> <div style="display: flex; gap: 4px; align-items: center;"><button class="plus-btn" data-index="${index}">+1</button> <button class="minus-btn" data-index="${index}">-1</button></div>`;
+        div.setAttribute('role', 'listitem');
+        div.innerHTML = `<span class="player-name">${player.name}</span> <span class="score" aria-label="${player.name} has ${player.score} points">${player.score}</span> <div style="display: flex; gap: 4px; align-items: center;"><button class="plus-btn" data-index="${index}" aria-label="Add 1 point to ${player.name.replace(/"/g, '&quot;')}">+1</button> <button class="minus-btn" data-index="${index}" aria-label="Subtract 1 point from ${player.name.replace(/"/g, '&quot;')}">-1</button></div>`;
         scoreboard.appendChild(div);
       });
     }
@@ -1523,6 +1602,7 @@
     generateBtn.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * topics.length);
       topicDisplay.textContent = topics[randomIndex];
+      topicDisplay.setAttribute('aria-label', `Topic: ${topics[randomIndex]}`);
 
       // Add visual feedback
       generateBtn.classList.add('generated');
@@ -1545,6 +1625,16 @@
 
         renderContestants();
         renderScoreboard();
+        
+        // Announce to screen readers
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.textContent = `Player ${name} added`;
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
       }
     });
 
@@ -1558,6 +1648,7 @@
       if (e.target.classList.contains('remove-btn')) {
         const index = parseInt(e.target.dataset.index);
         const button = e.target;
+        const removedPlayerName = players[index].name;
 
         // Add visual feedback - pulse animation
         button.classList.add('removed');
@@ -1567,6 +1658,16 @@
           players.splice(index, 1);
           renderContestants();
           renderScoreboard();
+          
+          // Announce to screen readers
+          const announcement = document.createElement('div');
+          announcement.setAttribute('role', 'status');
+          announcement.setAttribute('aria-live', 'polite');
+          announcement.style.position = 'absolute';
+          announcement.style.left = '-10000px';
+          announcement.textContent = `Player ${removedPlayerName} removed`;
+          document.body.appendChild(announcement);
+          setTimeout(() => announcement.remove(), 1000);
         }, 400);
       }
     });
@@ -1586,6 +1687,16 @@
 
         renderScoreboard();
         localStorage.setItem('players', JSON.stringify(players));
+        
+        // Announce to screen readers
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.textContent = `${players[index].name} now has ${players[index].score} points`;
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
       } else if (e.target.classList.contains('minus-btn')) {
         players[index].score--;
 
@@ -1597,12 +1708,28 @@
 
         renderScoreboard();
         localStorage.setItem('players', JSON.stringify(players));
+        
+        // Announce to screen readers
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.style.position = 'absolute';
+        announcement.style.left = '-10000px';
+        announcement.textContent = `${players[index].name} now has ${players[index].score} points`;
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
       }
     });
 
     renderContestants();
     renderScoreboard();
     renderTopics();
+    
+    // Initialize topic display with proper aria-label
+    const topicDisplayElement = document.getElementById('topicDisplay');
+    if (topicDisplayElement && topicDisplayElement.textContent.trim() === 'Select or generate a topic to begin') {
+      topicDisplayElement.setAttribute('aria-label', 'No topic selected yet');
+    }
 
     // Add event listener for topic management (add, remove, and select)
     document
@@ -1637,6 +1764,9 @@
         } else if (e.target.classList.contains('select-topic-btn')) {
           const selectedTopic = e.target.dataset.topic;
           topicDisplay.textContent = selectedTopic;
+
+          // Update aria-label for screen reader
+          topicDisplay.setAttribute('aria-label', `Topic: ${selectedTopic}`);
 
           // Add visual feedback - pulse animation
           e.target.classList.add('selected');

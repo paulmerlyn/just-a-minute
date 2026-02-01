@@ -19,9 +19,10 @@ body {
 }
 
 body {
-  color: #333;
+  color: #222;
   background: #ffffff;
   line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Typography */
@@ -50,6 +51,11 @@ a {
 a:hover {
   color: #0051cc;
   text-decoration: underline;
+}
+
+a:focus {
+  outline: 3px solid #0070f3;
+  outline-offset: 2px;
 }
 
 /* Container for centered content */
@@ -96,7 +102,7 @@ a:hover {
 .site-footer p {
   margin: 0.5rem 0;
   font-size: 0.9rem;
-  color: #666;
+  color: #555;
 }
 
 .privacy-notice {
@@ -111,7 +117,7 @@ a:hover {
   font-size: 1rem;
   font-weight: 500;
   text-align: center;
-  border: none;
+  border: 2px solid;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -120,20 +126,34 @@ a:hover {
 .btn-primary {
   background: #0070f3;
   color: white;
+  border-color: #0070f3;
 }
 
 .btn-primary:hover {
   background: #0051cc;
+  border-color: #0051cc;
   text-decoration: none;
 }
 
+.btn-primary:focus {
+  outline: 3px solid #0070f3;
+  outline-offset: 2px;
+}
+
 .btn-secondary {
-  background: #666;
+  background: #555;
   color: white;
+  border-color: #555;
 }
 
 .btn-secondary:hover {
-  background: #444;
+  background: #333;
+  border-color: #333;
+}
+
+.btn-secondary:focus {
+  outline: 3px solid #0070f3;
+  outline-offset: 2px;
 }
 
 /* Card component for product displays */
