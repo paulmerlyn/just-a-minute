@@ -75,15 +75,47 @@ npm run test:report
    npx playwright install
    ```
 
-2. **Run all tests**:
+2. **Run all tests** (optimized for speed - skips obfuscation):
    ```bash
    npm test
    ```
+   This uses `npm run dev:test` which starts the dev server WITHOUT obfuscation, making tests 20-30% faster.
 
 3. **View results**:
-   - Console output shows pass/fail
+   - Console output shows pass/fail with debug logging
    - HTML report: `npm run test:report`
    - UI mode: `npm run test:ui`
+
+## Performance Optimizations
+
+### Timeout Settings
+- **Global timeout**: 60 seconds per test
+- **Navigation timeout**: 60 seconds for page transitions
+- **Dev server startup**: 120 seconds
+
+### Test Startup
+Tests use `npm run dev:test` instead of `npm run dev` to:
+- **Skip JavaScript obfuscation** (major time saver)
+- Start the dev server faster
+- Reduce overall test execution time
+
+If you need to test the obfuscated version, use:
+```bash
+npm run dev        # Regular dev with obfuscation
+npm run dev:test   # Test mode without obfuscation
+```
+
+### Debug Output
+Tests include console logging to track progress:
+```
+🔐 Navigating to home page...
+📝 Filling access code...
+🔓 Submitting...
+⏳ Waiting for game to load...
+✅ Game loaded successfully
+```
+
+This helps identify where tests are hanging if they timeout.
 
 ## Test Access Code
 
