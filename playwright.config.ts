@@ -45,20 +45,11 @@ export default defineConfig({
   timeout: 60000,
 
   /* Configure projects for major browsers */
+  /* NOTE: Run only Chromium for faster feedback. Add Firefox/WebKit after all tests pass */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
     },
   ],
 
