@@ -1,10 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 
-// Load the Inter font from Google Fonts
-// This provides a clean, modern font for the entire site
-const inter = Inter({ subsets: ['latin'] })
+// Load the Outfit font from Google Fonts
+// This provides a clean, modern, friendly font for the entire site
+const outfit = Outfit({ subsets: ['latin'] })
 
 // Metadata for SEO and browser display
 // These will appear in search results and browser tabs
@@ -34,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={outfit.className}>
         {children}
       </body>
     </html>
