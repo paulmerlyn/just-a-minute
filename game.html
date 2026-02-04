@@ -1211,31 +1211,45 @@
           <li style="line-height: 0.8;">One bonus point to a speaker who completes an entire minute</li>
         </ul>
       </details>
-      <div id="timer" role="region" aria-label="Game Timer">
-        <div class="timer-controls-container">
-          <div class="timer-buttons">
-            <button onclick="startTimer()" aria-label="Start timer">Start</button>
-            <button onclick="stopTimer()" aria-label="Stop timer">Stop</button>
-            <button onclick="add5()" aria-label="Add 5 seconds to timer">+5</button>
-            <button onclick="sub5()" aria-label="Subtract 5 seconds from timer">-5</button>
-            <button onclick="resetTimer()" aria-label="Reset timer to 60 seconds">Reset</button>
-          </div>
-          <div id="timer-display" role="status" aria-live="polite" aria-label="Time remaining in seconds">60</div>
+    </div>
+
+    <div id="timer" role="region" aria-label="Game Timer" style="
+      background-color: #fff;
+      padding: 32px;
+      margin: 24px auto;
+      max-width: 700px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eaeaea;
+    ">
+      <div class="timer-controls-container">
+        <div class="timer-buttons">
+          <button onclick="startTimer()" aria-label="Start timer">Start</button>
+          <button onclick="stopTimer()" aria-label="Stop timer">Stop</button>
+          <button onclick="add5()" aria-label="Add 5 seconds to timer">+5</button>
+          <button onclick="sub5()" aria-label="Subtract 5 seconds from timer">-5</button>
+          <button onclick="resetTimer()" aria-label="Reset timer to 60 seconds">Reset</button>
         </div>
+        <div id="timer-display" role="status" aria-live="polite" aria-label="Time remaining in seconds">60</div>
       </div>
-      <div style="
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #eaeaea;
-          ">
-        <button id="generateBtn" style="background-color: #2ecc71; border-color: #2ecc71; margin-bottom: 8px" aria-label="Generate a random topic">
-          Generate Topic
-        </button>
-        <div id="topicDisplay" role="status" aria-live="assertive" aria-label="Current topic">
-          <span aria-label="No topic selected yet">Select or generate a topic to begin</span>
-        </div>
-        <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
+    </div>
+
+    <div style="
+      background-color: #fff;
+      padding: 32px;
+      margin: 24px auto;
+      max-width: 700px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eaeaea;
+    ">
+      <button id="generateBtn" style="background-color: #2ecc71; border-color: #2ecc71; margin-bottom: 8px" aria-label="Generate a random topic">
+        Generate Topic
+      </button>
+      <div id="topicDisplay" role="status" aria-live="assertive" aria-label="Current topic">
+        <span aria-label="No topic selected yet">Select or generate a topic to begin</span>
       </div>
+      <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
     </div>
     <details style="border: 1px solid #eaeaea;" role="region" aria-label="Scoreboard">
       <summary>Scoreboard</summary>
