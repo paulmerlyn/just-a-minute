@@ -87,10 +87,10 @@
       padding: 32px;
       margin: 24px auto;
       max-width: 700px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
       text-align: left;
-      border: 1px solid #eaeaea;
+      border: 1px solid #e8eef5;
     }
 
     .timer-controls-container {
@@ -98,10 +98,10 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      border: 1px solid #eaeaea;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e8eef5;
       margin-bottom: 24px;
     }
 
@@ -178,7 +178,7 @@
     }
 
     button {
-      padding: 14px 28px;
+      padding: 12px 24px;
       font-size: 1rem;
       background-color: #3498db;
       color: white;
@@ -188,15 +188,15 @@
       margin-top: 16px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
     }
 
     button:hover {
       background-color: #2980b9;
       border-color: #2980b9;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(52, 152, 219, 0.25);
     }
 
     button:focus,
@@ -210,39 +210,46 @@
     }
 
     #topicDisplay {
-      margin-top: 8px;
-      font-size: 2rem;
+      margin-top: 16px;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #2c3e50;
-      min-height: 56px;
-      padding: 16px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      border: 2px solid #eaeaea;
+      min-height: 64px;
+      padding: 20px 24px;
+      background-color: #f0f4f8;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border: 2px solid #d9e4f0;
       font-family: 'Inter', sans-serif;
       transition: all 0.3s ease;
-      border-left: 4px solid #3498db;
+      border-left: 5px solid #3498db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #topicDisplay span {
+      color: #666;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
     details {
       margin: 20px auto;
       max-width: 700px;
       background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
       padding: 32px;
-      border: 1px solid #eaeaea;
-      transition: all 0.3s ease;
+      border: 1px solid #e8eef5;
+      transition: all 0.2s ease;
       font-family: 'Inter', sans-serif;
     }
 
     details[open] {
       border-color: #3498db;
-    }
-
-    details[open] {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 12px rgba(52, 152, 219, 0.1);
     }
 
     .inner-details {
@@ -299,10 +306,11 @@
       justify-content: space-between;
       font-family: 'Inter', sans-serif;
       position: relative;
+      user-select: none;
     }
 
     summary:hover {
-      background-color: #f8f9fa;
+      background-color: #f0f4f8;
       color: #3498db;
     }
 
@@ -348,8 +356,17 @@
     }
 
     input[type="text"] {
-      border: 2px solid #ccc;
-      transition: border-color 0.3s ease;
+      border: 2px solid #e8eef5;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      background-color: #f8f9fa;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]::placeholder {
+      color: #999;
+      font-weight: 400;
     }
 
     input[type="text"]:focus,
@@ -357,6 +374,8 @@
       outline: 3px solid #0070f3;
       outline-offset: 2px;
       border-color: #3498db;
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.08);
     }
 
     textarea {
@@ -388,15 +407,21 @@
     #newContestant {
       flex: 1;
       height: 40px;
-      padding: 8px 12px;
-      border: 2px solid #ccc;
+      padding: 10px 14px;
+      border: 2px solid #e8eef5;
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
       box-sizing: border-box;
-      transition: border-color 0.3s ease;
+      transition: all 0.2s ease;
       font-size: 1rem;
-      line-height: 24px;
+      line-height: 20px;
       vertical-align: middle;
+      background-color: #f8f9fa;
+    }
+
+    #newContestant::placeholder {
+      color: #999;
+      font-weight: 400;
     }
 
     #newContestant:focus,
@@ -404,7 +429,8 @@
       outline: 3px solid #0070f3;
       outline-offset: 2px;
       border-color: #3498db;
-      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.08);
     }
 
     #addContestant {
@@ -1218,9 +1244,9 @@
       padding: 32px;
       margin: 24px auto;
       max-width: 700px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e8eef5;
     ">
       <div class="timer-controls-container">
         <div class="timer-buttons">
@@ -1239,15 +1265,15 @@
       padding: 32px;
       margin: 24px auto;
       max-width: 700px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e8eef5;
     ">
       <button id="generateBtn" style="background-color: #2ecc71; border-color: #2ecc71; margin-bottom: 8px" aria-label="Generate a random topic">
         Generate Topic
       </button>
       <div id="topicDisplay" role="status" aria-live="assertive" aria-label="Current topic">
-        <span aria-label="No topic selected yet">Select or generate a topic to begin</span>
+        <span aria-label="No topic selected yet">Generate a topic or use Topics Manager to choose one</span>
       </div>
       <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
     </div>
