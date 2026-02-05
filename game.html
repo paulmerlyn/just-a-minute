@@ -101,7 +101,6 @@
       background-color: #1a2332;
       border-radius: 8px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      border: 2px solid #00d9ff;
       margin-bottom: 24px;
     }
 
@@ -214,8 +213,8 @@
       font-size: 1.8rem;
       font-weight: 700;
       color: #00d9ff;
-      min-height: 64px;
-      padding: 20px 24px;
+      min-height: 48px;
+      padding: 15px 24px;
       background-color: #1a2332;
       border-radius: 8px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -240,8 +239,8 @@
       background-color: #1a2332;
       border-radius: 8px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      padding: 32px;
-      border: 2px solid #00d9ff;
+      padding: 20px;
+      border: 2px solid #ff8c00;
       transition: all 0.2s ease;
       font-family: 'Outfit', sans-serif;
     }
@@ -312,12 +311,6 @@
     summary:hover {
       background-color: rgba(255, 140, 0, 0.1);
       color: #ff8c00;
-    }
-
-    summary:focus,
-    summary:focus-visible {
-      outline: 3px solid #00d9ff;
-      outline-offset: 2px;
     }
 
     summary::after {
@@ -525,7 +518,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
+      padding: 4px 12px;
       border-bottom: 1px solid #2a3447;
       transition: background-color 0.2s ease;
     }
@@ -545,8 +538,6 @@
       transition: all 0.3s ease;
       font-family: 'Outfit', sans-serif;
       font-weight: 600;
-      position: relative;
-      bottom: 6px;
     }
 
     .plus-btn {
@@ -596,12 +587,12 @@
     }
 
     .score {
-      font-size: 1.5rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #00d9ff;
-      margin: 0 16px;
+      margin: 0 12px;
       font-family: 'Outfit', sans-serif;
-      flex: 0 0 60px;
+      flex: 0 0 auto;
       text-align: center;
     }
 
@@ -625,7 +616,7 @@
 
     th,
     td {
-      padding: 10px 12px;
+      padding: 4px 12px;
       text-align: left;
       border-bottom: 1px solid #2a3447;
     }
@@ -634,7 +625,7 @@
       background-color: transparent;
       font-weight: 600;
       color: #00d9ff;
-      padding: 12px 12px;
+      padding: 6px 12px;
     }
 
     tr:hover {
@@ -1054,31 +1045,8 @@
       z-index: 100;
     }
 
-    #generateBtn::after {
-      content: 'Generate (or pick from Topics Manager)';
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #1a2332;
-      border: 1px solid #ff8c00;
-      color: #ff8c00;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.1s ease;
-      margin-bottom: 5px;
-      z-index: 100;
-      max-width: 300px;
-      text-align: center;
-    }
-
     #addTopicBtn:hover::after,
-    #addContestant:hover::after,
-    #generateBtn:hover::after {
+    #addContestant:hover::after {
       opacity: 1;
     }
 
@@ -1188,8 +1156,7 @@
 
       /* Hide tooltips on mobile */
       #addTopicBtn::after,
-      #addContestant::after,
-      #generateBtn::after {
+      #addContestant::after {
         display: none;
       }
     }
@@ -1251,17 +1218,14 @@
         <p style="line-height: 1.2;">Min. 3 players. One player (not the speaker) volunteers to start/stop the 1-minute
           timer.</p>
       </details>
-      <details class="inner-details" style="border: 1px solid #2a3447;">
+      <details class="inner-details scoring-details" style="border: 1px solid #2a3447;">
         <summary>Finer Points</summary>
-        <p style="text-align: left; line-height: 1.6; padding-top: 8px;">
-          <strong><em>Hesitation</em></strong> means noticeable ums, pauses, lip-smacks, etc.<br>
-          <strong><em>Deviation</em></strong> means straying off topic (though brief tangents are allowable if the speaker
-          returns to the topic).<br>
-          <strong><em>Repetition</em></strong> means reuse of a word. Exceptions: repetition of words in the topic as well as common
-          link words or short words such as "and", "a", and "the" is allowable.<br>
-          <strong><em>Plural</em></strong> forms (e.g. cat and cats) and <strong><em>derivatives</em></strong> (e.g. bake,
-          baking, and baked) are distinct words and may each be used once.<br>
-        </p>
+        <ul style="line-height: 0.5; padding-top: 12px;">
+          <li style="line-height: 1.4; margin-bottom: 8px;"><strong><em>Hesitation</em></strong> means noticeable ums, pauses, lip-smacks, etc.</li>
+          <li style="line-height: 1.4; margin-bottom: 8px;"><strong><em>Deviation</em></strong> means straying off topic (though brief tangents are allowable if the speaker returns to the topic).</li>
+          <li style="line-height: 1.4; margin-bottom: 8px;"><strong><em>Repetition</em></strong> means reuse of a word. Exceptions: repetition of words in the topic as well as common link words or short words such as "and", "a", and "the" is allowable.</li>
+          <li style="line-height: 1.4; margin-bottom: 8px;"><strong><em>Plural</em></strong> forms (e.g. cat and cats) and <strong><em>derivatives</em></strong> (e.g. bake, baking, and baked) are distinct words and may each be used once.</li>
+        </ul>
       </details>
 
       <details class="inner-details scoring-details" style="border: 1px solid #2a3447;">
@@ -1277,12 +1241,12 @@
 
     <div id="timer" role="region" aria-label="Game Timer" style="
       background-color: #1a2332;
-      padding: 32px;
+      padding: 20px;
       margin: 24px auto;
       max-width: 700px;
       border-radius: 8px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      border: 2px solid #00d9ff;
+      border: 2px solid #ff8c00;
     ">
       <div class="timer-controls-container">
         <div class="timer-buttons">
@@ -1298,12 +1262,12 @@
 
     <div style="
       background-color: #1a2332;
-      padding: 32px;
+      padding: 20px;
       margin: 24px auto;
       max-width: 700px;
       border-radius: 8px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      border: 2px solid #00d9ff;
+      border: 2px solid #ff8c00;
     ">
       <button id="generateBtn" style="background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%); border-color: #ff8c00; margin-bottom: 8px; box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);" aria-label="Generate a random topic">
         Generate Topic
@@ -1313,22 +1277,22 @@
       </div>
       <a id="topicAnchor" style="display: block; position: relative; top: -100px; visibility: hidden;"></a>
     </div>
-    <details style="border: 2px solid #00d9ff;" role="region" aria-label="Scoreboard">
+    <details role="region" aria-label="Scoreboard">
       <summary>Scoreboard</summary>
       <div id="scoreboard" role="list"></div>
     </details>
-    <details style="border: 2px solid #00d9ff;" role="region" aria-label="Manage Players">
+    <details role="region" aria-label="Manage Players">
       <summary>Manage Players</summary>
       <div id="contestantManager">
         <div
           style="margin-bottom: 15px; padding: 10px; background-color: #0f172a; border-radius: 5px; display: flex; gap: 12px; align-items: center;">
-          <input type="text" id="newContestant" placeholder="Enter player name" aria-label="Enter new player name" />
+          <input type="text" id="newContestant" placeholder="Player name" aria-label="Player name" />
           <button id="addContestant" aria-label="Add new player">+</button>
         </div>
       </div>
       <div id="contestantList"></div>
     </details>
-    <details style="border: 2px solid #00d9ff;" role="region" aria-label="Manage Topics">
+    <details role="region" aria-label="Manage Topics">
       <summary>Topics Manager</summary>
       <div id="topicsManager"></div>
     </details>
@@ -1451,7 +1415,7 @@
       const topicsManager = document.getElementById('topicsManager');
       const formHTML =
         '<div style="margin-bottom: 15px; padding: 10px; background-color: #0f172a; border-radius: 5px; display: flex; gap: 12px; align-items: center;">' +
-        '<input type="text" id="newTopic" placeholder="Enter new topic" aria-label="Enter new topic" style="flex: 1; height: 40px; padding: 8px 12px; border: 2px solid #00d9ff; border-radius: 8px; font-family: \'Outfit\', sans-serif; box-sizing: border-box; transition: border-color 0.3s ease; font-size: 1rem; line-height: 24px; vertical-align: middle; background-color: #0f172a; color: #e8ecf1;" >' +
+        '<input type="text" id="newTopic" placeholder="New topic" aria-label="New topic" style="height: 40px; padding: 10px 14px; border: 2px solid #00d9ff; border-radius: 8px; font-family: \'Outfit\', sans-serif; box-sizing: border-box; transition: all 0.2s ease; font-size: 1rem; line-height: 20px; vertical-align: middle; background-color: #0f172a; color: #e8ecf1;" >' +
         '<button id="addTopicBtn" style="height: 40px; width: 40px; font-size: 1.2rem; background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%); color: white; border: 2px solid #00d9ff; border-radius: 8px; cursor: pointer; box-sizing: border-box; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; flex-shrink: 0; vertical-align: middle; margin-top: -2px; box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);" aria-label="Add new topic">+</button>' +
         '</div>';
 
@@ -1477,13 +1441,13 @@
         formHTML +
         '<table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem; font-family: \'Outfit\', sans-serif;" role="list">';
       tableHTML +=
-        '<thead><tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Topic</th><th style="text-align: right; padding: 8px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Actions</th></tr></thead>';
+        '<thead><tr><th style="text-align: left; padding: 6px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Topic</th><th style="text-align: right; padding: 6px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Actions</th></tr></thead>';
       tableHTML += '<tbody>';
 
       uniqueTopics.forEach((topic, index) => {
         tableHTML += `<tr style="border-bottom: 1px solid #2a3447;" role="listitem">
-                    <td style="padding: 8px; color: #e8ecf1;">${topic}</td>
-                    <td style="padding: 8px; text-align: right; white-space: nowrap;">
+                    <td style="padding: 4px; color: #e8ecf1;">${topic}</td>
+                    <td style="padding: 4px; text-align: right; white-space: nowrap;">
                         <button class="select-topic-btn" data-topic="${topic}" style="background: linear-gradient(135deg, #00d962 0%, #00a844 100%); color: white; border: 2px solid #00d962; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px; margin-right: 5px; box-shadow: 0 4px 15px rgba(0, 217, 98, 0.3);" aria-label="Set topic to ${topic.replace(/"/g, '&quot;')}">✓</button>
                         <button class="remove-topic-btn" data-topic="${topic}" style="background: linear-gradient(135deg, #ff3b3b 0%, #ff0000 100%); color: white; border: 2px solid #ff3b3b; border-radius: 3px; cursor: pointer; padding: 5px 10px; font-size: 14px; box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);" aria-label="Remove topic ${topic.replace(/"/g, '&quot;')}">–</button>
                     </td>
@@ -1689,12 +1653,12 @@
         return;
       }
       let tableHTML = '<table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; font-family: \'Outfit\', sans-serif;" role="list">';
-      tableHTML += '<thead><tr><th style="text-align: left; padding: 8px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Player</th><th style="text-align: right; padding: 8px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Action</th></tr></thead>';
+      tableHTML += '<thead><tr><th style="text-align: left; padding: 6px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Player</th><th style="text-align: right; padding: 6px; border-bottom: 1px solid #2a3447; color: #00d9ff;">Action</th></tr></thead>';
       tableHTML += '<tbody>';
       players.forEach((player, index) => {
         tableHTML += `<tr style="border-bottom: 1px solid #2a3447;" role="listitem">
-                        <td style="padding: 8px; color: #e8ecf1;">${player.name}</td>
-                        <td style="padding: 8px; text-align: right;"><button class="remove-btn" data-index="${index}" aria-label="Remove player ${player.name.replace(/"/g, '&quot;')}">–</button></td>
+                        <td style="padding: 4px; color: #e8ecf1;">${player.name}</td>
+                        <td style="padding: 4px; text-align: right;"><button class="remove-btn" data-index="${index}" aria-label="Remove player ${player.name.replace(/"/g, '&quot;')}">–</button></td>
                     </tr>`;
       });
       tableHTML += '</tbody></table>';
