@@ -8,3 +8,4 @@ instructions:
   - Adhere to consumer privacy regulations and best practices regarding cookies if the site needs to use cookies.
   - At this point, don’t include any sort of database because I don’t think the site will need to persist any data.
   - The main item to be served on the site is a simple web-based game called “Just a Minute”.
+  - Don't commit code or even ask me if I want you to commit code. I will manually perform code commits when I'm ready.
